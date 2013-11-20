@@ -1,11 +1,13 @@
 defmodule Server do
-  def start do
-    IO.puts "Starting server"
-
+  def start(port) do
+    # Use a binary/string, explicit exchange TCP configuration.
     tcp_options = [{:active, false}, :binary]
 
-    # Start listening and accepting connections.
-    { :ok, socket } = :gen_tcp.listen 3000, tcp_options
+    # Bind and listen on the specified port.
+    { :ok, socket } = :gen_tcp.listen port, tcp_options
+
+    IO.puts "Started server on port #{port}."
+
     handle_connections socket
   end
 

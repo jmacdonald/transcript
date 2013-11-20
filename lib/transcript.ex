@@ -7,7 +7,11 @@ defmodule Transcript do
     Transcript.Supervisor.start_link
   end
 
-  def main(args) do
-    Server.start 
+  def main [ port | other_args ] do
+    # Get an integer version of the port argument.
+    { port, _ } = Integer.parse port
+
+    # Start the server on the specified port.
+    Server.start port
   end
 end
