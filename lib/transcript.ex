@@ -6,4 +6,8 @@ defmodule Transcript do
   def start(_type, _args) do
     Transcript.Supervisor.start_link
   end
+
+  def main(args) do
+    Server.start 
+  end
 end
